@@ -1,0 +1,1050 @@
+<!doctype html>
+<!--
+MIT License
+Copyright (c) 2026 Red Hat Sprite
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+and associated documentation files (the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge, publish, distribute,
+sublicense, and/or sell copies of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Azimuth v 3.6.0 - Offline</title>
+  <meta name="author" content="Red Hat Sprite" />
+  <meta name="application-name" content="Azimuth" />
+  <meta name="version" content="3.6.0" />
+  <meta name="license" content="MIT" />
+  <meta name="description" content="Lighting preview and normal and Light Mask map generation designed specifically for pixel art. Developed for Moonfell RPG. Offline Vite build." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23181b20'/%3E%3Crect x='3' y='3' width='10' height='10' fill='%2391caff'/%3E%3C/svg%3E" />
+  <script type="module" crossorigin src="./assets/index-CxdulmYE.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DXd-rqlb.css">
+</head>
+<body>
+<main
+      ><header
+        ><div class="tool-heading"
+          ><button
+            id="tool-info-open"
+            class="info-button"
+            type="button"
+            aria-label="About Azimuth"
+            title="About Azimuth."
+            >ⓘ</button
+          ><h1>Azimuth <span class="version">v 3.6.0</span></h1></div
+        ><div class="watch-controls"
+          ><small id="watch-status" role="status" aria-live="polite"></small></div
+      ></header>
+      <section class="texture-controls" aria-label="Textures">
+        <div class="texture"
+          ><div class="texture-heading"
+            ><label for="albedo-file">Albedo</label
+            ><small id="albedo-info" class="texture-info"></small></div
+          ><div class="texture-actions"
+            ><button
+              id="open-albedo"
+              class="browse-button"
+              type="button"
+              title="Browse or drop an Albedo texture file (PNG)."
+              ><svg
+                class="action-icon"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M2 6V4h6l2 2h8v3M2 6h13l-2 12H2z" />
+                <circle cx="16" cy="14" r="4" />
+                <path d="m19 17 3 3" /></svg
+              >Browse</button
+            ><button id="clear-albedo" type="button"
+              ><svg
+                class="action-icon"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 6h16M9 6V3h6v3M6 6l1 15h10l1-15M10 10v7M14 10v7" /></svg
+              >Remove</button
+            ></div
+          ><input id="albedo-file" type="file" accept=".png,image/png" hidden
+        /></div>
+        <div class="texture"
+          ><div class="texture-heading"
+            ><label for="normal-file">Normal</label
+            ><small id="normal-info" class="texture-info"></small></div
+          ><div class="texture-actions"
+            ><button
+              id="open-normal"
+              class="browse-button"
+              type="button"
+              title="Browse or drop a Normal Map texture file (PNG)."
+              ><svg
+                class="action-icon"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M2 6V4h6l2 2h8v3M2 6h13l-2 12H2z" />
+                <circle cx="16" cy="14" r="4" />
+                <path d="m19 17 3 3" /></svg
+              >Browse</button
+            ><button id="clear-normal" type="button"
+              ><svg
+                class="action-icon"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 6h16M9 6V3h6v3M6 6l1 15h10l1-15M10 10v7M14 10v7" /></svg
+              >Remove</button
+            ></div
+          ><div class="generation-buttons"
+            ><button type="button" id="generate-normal"
+              ><svg
+                class="action-icon"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="m4 20 12-12 3 3L7 23zM13 11l3 3M6 2v6M3 5h6M19 1v4M17 3h4M21 16v6M18 19h6"
+                /></svg
+              >Generate</button
+            ><button type="button" id="modify-normal"
+              ><svg
+                class="action-icon"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 4h10M3 4v16h16v-9M9 15l1-4L18 3l3 3-8 8-4 1zM16 5l3 3" /></svg
+              >Modify</button
+            ><button type="button" id="export-normal"
+              ><svg
+                class="action-icon"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 2v13M7 10l5 5 5-5M4 15v6h16v-6" /></svg
+              >Export</button
+            ></div
+          ><input id="normal-file" type="file" accept=".png,image/png" hidden
+        /></div>
+        <div class="texture"
+          ><div class="texture-heading"
+            ><label for="mask-file">Light Mask</label
+            ><small id="mask-info" class="texture-info"></small></div
+          ><div class="texture-actions"
+            ><button
+              id="open-mask"
+              class="browse-button"
+              type="button"
+              title="Browse or drop a Light Mask texture file (PNG)."
+              ><svg
+                class="action-icon"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M2 6V4h6l2 2h8v3M2 6h13l-2 12H2z" />
+                <circle cx="16" cy="14" r="4" />
+                <path d="m19 17 3 3" /></svg
+              >Browse</button
+            ><button id="clear-mask" type="button"
+              ><svg
+                class="action-icon"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 6h16M9 6V3h6v3M6 6l1 15h10l1-15M10 10v7M14 10v7" /></svg
+              >Remove</button
+            ></div
+          ><div class="generation-buttons"
+            ><button type="button" id="generate-mask"
+              ><svg
+                class="action-icon"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="m4 20 12-12 3 3L7 23zM13 11l3 3M6 2v6M3 5h6M19 1v4M17 3h4M21 16v6M18 19h6"
+                /></svg
+              >Generate</button
+            ><button type="button" id="modify-mask"
+              ><svg
+                class="action-icon"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 4h10M3 4v16h16v-9M9 15l1-4L18 3l3 3-8 8-4 1zM16 5l3 3" /></svg
+              >Modify</button
+            ><button type="button" id="export-mask"
+              ><svg
+                class="action-icon"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 2v13M7 10l5 5 5-5M4 15v6h16v-6" /></svg
+              >Export</button
+            ></div
+          ><input id="mask-file" type="file" accept=".png,image/png" hidden
+        /></div>
+      </section>
+
+      <section class="preview-toolbar" aria-label="Preview">
+        <label class="view-field"
+          >View<select id="view"
+            ><option value="lit">Final</option
+            ><option value="albedo">Albedo</option
+            ><option value="normal">Normal</option
+            ><option value="mask">Light Mask</option></select
+          ></label
+        >
+        <label class="color-field"
+          >Light Color<input id="light-color" type="color" value="#ffffff"
+        /></label>
+        <label class="cursor-field"
+          >Light Cursor<select id="show-marker"
+            ><option value="simple">Simple</option
+            ><option value="advanced" selected>Advanced</option
+            ><option value="off">Off</option></select
+          ></label
+        ><label class="toggle follow-mouse"
+          ><input id="follow-mouse" aria-keyshortcuts="F" type="checkbox" checked />Follow
+          Mouse</label
+        >
+        <div class="background-controls"
+          ><label class="color-field"
+            >BG Color<input id="bg-color" type="color" value="#2b7ca7" /></label
+          ><button id="detect-bg" type="button">Detect BG</button
+          ><label class="toggle"><input id="hide-bg" type="checkbox" />Hide BG</label></div
+        >
+      </section>
+      <section class="slider-controls" aria-label="Lighting">
+        <label
+          ><span class="slider-heading"
+            ><span
+              >Brightness
+              <button type="button" class="reset" data-slider="power" aria-label="Reset Brightness"
+                >↺</button
+              ></span
+            ><output id="power-value">2.5</output></span
+          ><input id="power" type="range" min="0" max="25" step="0.1" value="2.5"
+        /></label>
+        <label
+          ><span class="slider-heading"
+            ><span
+              >Falloff
+              <button type="button" class="reset" data-slider="falloff" aria-label="Reset Falloff"
+                >↺</button
+              ></span
+            ><output id="falloff-value">70 px</output></span
+          ><input id="falloff" type="range" min="10" max="200" value="70"
+        /></label>
+        <label
+          ><span class="slider-heading"
+            ><span
+              >Height
+              <button type="button" class="reset" data-slider="height" aria-label="Reset Height"
+                >↺</button
+              ></span
+            ><output id="height-value">25 px</output></span
+          ><input id="height" type="range" min="5" max="200" value="25"
+        /></label>
+        <label
+          ><span class="slider-heading"
+            ><span
+              >Ambient
+              <button type="button" class="reset" data-slider="ambient" aria-label="Reset Ambient"
+                >↺</button
+              ></span
+            ><output id="ambient-value">15%</output></span
+          ><input id="ambient" type="range" min="0" max="100" value="15"
+        /></label>
+        <label
+          ><span class="slider-heading"
+            ><span
+              >Light Mask
+              <button
+                type="button"
+                class="reset"
+                data-slider="mask-strength"
+                aria-label="Reset Light Mask"
+                >↺</button
+              ></span
+            ><output id="mask-value">100%</output></span
+          ><input id="mask-strength" type="range" min="0" max="100" value="100"
+        /></label>
+      </section>
+      <div class="image-status"><span id="resolution"></span><span id="loaded-status"></span></div
+      >
+      <div class="stage"
+        ><div class="viewport-shell"
+          ><canvas id="scrollbar-underlay" aria-hidden="true"></canvas
+          ><button
+            type="button"
+            id="export-canvas"
+            aria-label="Export Final lighting as PNG"
+            title="Save Final lighting as a PNG file."
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M12 2v13M7 10l5 5 5-5M4 15v6h16v-6" /></svg></button
+          ><div id="canvas-viewport"
+            ><div id="canvas-content"
+              ><canvas
+                id="canvas"
+                width="250"
+                height="200"
+                role="img"
+                aria-label="Interactive texture lighting preview"
+              ></canvas></div></div
+          ><canvas id="cursor-overlay" aria-hidden="true"></canvas
+          ><canvas id="hint-cursor-overlay" aria-hidden="true"></canvas></div
+        ><div class="zoom-controls" aria-label="Canvas zoom"
+          ><svg class="zoom-icon" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true">
+            <circle
+              cx="6.5"
+              cy="6.5"
+              r="4.5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+            <path
+              d="m10 10 4 4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            /></svg
+          ><button type="button" id="zoom-minus" aria-label="Zoom out"
+            ><svg
+              width="10"
+              height="10"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M3 8h10" /></svg></button
+          ><input
+            id="zoom-slider"
+            type="range"
+            min="10"
+            max="1600"
+            value="100"
+            aria-label="Zoom"
+          /><button type="button" id="zoom-plus" aria-label="Zoom in"
+            ><svg
+              width="10"
+              height="10"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M3 8h10M8 3v10" /></svg></button
+          ><small class="pan-hint" hidden>Hold Space to Pan</small
+          ><div class="zoom-right"
+            ><span class="zoom-percent">%</span
+            ><input
+              id="zoom-value"
+              type="number"
+              step="any"
+              value="100"
+              aria-label="Zoom percent"
+            /><button type="button" id="zoom-fit">Fit</button></div
+          ></div
+        ></div
+      >
+
+      <dialog id="texture-mismatch" aria-labelledby="texture-mismatch-title"
+        ><h2 id="texture-mismatch-title">New Image Detected</h2
+        ><p>This image's dimensions do not match existing maps.</p
+        ><p>Loading this image will clear previous maps.</p
+        ><div class="generator-actions"
+          ><button type="button" data-resolution-choice="continue">Continue</button
+          ><button type="button" data-resolution-choice="cancel">Cancel</button></div
+        ></dialog
+      >
+      <dialog id="generator" aria-labelledby="generator-title">
+        <div class="generator-heading"
+          ><h2 id="generator-title">Generate Normal</h2
+          ><button type="button" id="generator-close" aria-label="Cancel generation"
+            ><svg
+              width="12"
+              height="12"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="m3 3 10 10M13 3 3 13" /></svg></button
+        ></div>
+        <label class="normal-option"
+          >Preset<select id="gen-preset"
+            ><option value="architecture">Architecture</option
+            ><option value="character">Character</option
+            ><option value="object" selected>Object</option
+            ><option value="terrain">Terrain</option></select
+          ></label
+        >
+        <label class="normal-option toggle"
+          ><input id="gen-merge" type="checkbox" checked />Merge Outlines</label
+        >
+        <label id="gen-strength-label"
+          >Shape Strength <output id="gen-strength-value"></output
+          ><input id="gen-strength" type="range" min="0" max="200" value="100"
+        /></label>
+        <label class="normal-option"
+          >Normal Strength <output id="gen-normal-strength-value"></output
+          ><input id="gen-normal-strength" type="range" min="0" max="300" value="100" /></label
+        ><label class="normal-option"
+          >Edge Width <output id="gen-edge-width-value"></output
+          ><input id="gen-edge-width" type="range" min="0" max="6" step="1" value="3"
+        /></label>
+        <label class="normal-option"
+          >Facet Splitting <output id="gen-facets-value"></output
+          ><input id="gen-facets" type="range" min="0" max="100" value="35"
+        /></label>
+        <label class="mask-option"
+          >Darkest Value <output id="gen-floor-value"></output
+          ><input id="gen-floor" type="range" min="0" max="255" value="20"
+        /></label>
+        <label class="mask-option"
+          >Lightest Value <output id="gen-ceiling-value"></output
+          ><input id="gen-ceiling" type="range" min="0" max="255" value="255"
+        /></label>
+        <label class="mask-option"
+          >Cavity Darkening <output id="gen-cavity-value"></output
+          ><input id="gen-cavity" type="range" min="0" max="100" value="35"
+        /></label>
+
+        <small id="generator-status" role="status"></small>
+        <label class="toggle"
+          ><input id="generator-show-texture" aria-keyshortcuts="S" type="checkbox" checked />Show
+          Texture</label
+        ><div class="generator-actions"
+          ><button type="button" id="generator-cancel">Cancel</button
+          ><button
+            type="button"
+            id="generator-apply"
+            title="Apply changes (Enter)"
+            data-shortcut-tooltip
+            aria-keyshortcuts="Enter"
+            >Apply</button
+          ></div
+        >
+      </dialog>
+      <dialog id="modifier" aria-labelledby="modifier-title"
+        ><div class="generator-heading"
+          ><h2 id="modifier-title">Modify Normal Map</h2
+          ><button type="button" id="modifier-close" aria-label="Cancel modification"
+            ><svg
+              width="12"
+              height="12"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="m3 3 10 10M13 3 3 13" /></svg></button></div
+        ><section class="hint-panel">
+          <div class="normal-option"
+            ><div class="normal-direction-layout"
+              ><div class="normal-direction-buttons"
+                ><div class="direction-label">Apply Direction</div
+                ><div class="direction-selector" role="group" aria-label="Surface direction"
+                  ><button
+                    type="button"
+                    data-direction="up-left"
+                    aria-label="Up left"
+                    title="Up left"
+                    ><svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <g transform="rotate(315 12 12)">
+                        <path d="M12 19V5m-5 5 5-5 5 5" />
+                      </g></svg></button
+                  ><button type="button" data-direction="up" aria-label="Up" title="Up"
+                    ><svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <g transform="rotate(0 12 12)">
+                        <path d="M12 19V5m-5 5 5-5 5 5" />
+                      </g></svg></button
+                  ><button
+                    type="button"
+                    data-direction="up-right"
+                    aria-label="Up right"
+                    title="Up right"
+                    ><svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <g transform="rotate(45 12 12)">
+                        <path d="M12 19V5m-5 5 5-5 5 5" />
+                      </g></svg></button
+                  ><button type="button" data-direction="left" aria-label="Left" title="Left"
+                    ><svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <g transform="rotate(270 12 12)">
+                        <path d="M12 19V5m-5 5 5-5 5 5" />
+                      </g></svg></button
+                  ><button type="button" data-direction="front" aria-label="Front" title="Front"
+                    ><svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <circle cx="12" cy="12" r="2.3" fill="currentColor" /></svg></button
+                  ><button type="button" data-direction="right" aria-label="Right" title="Right"
+                    ><svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <g transform="rotate(90 12 12)">
+                        <path d="M12 19V5m-5 5 5-5 5 5" />
+                      </g></svg></button
+                  ><button
+                    type="button"
+                    data-direction="down-left"
+                    aria-label="Down left"
+                    title="Down left"
+                    ><svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <g transform="rotate(225 12 12)">
+                        <path d="M12 19V5m-5 5 5-5 5 5" />
+                      </g></svg></button
+                  ><button type="button" data-direction="down" aria-label="Down" title="Down"
+                    ><svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <g transform="rotate(180 12 12)">
+                        <path d="M12 19V5m-5 5 5-5 5 5" />
+                      </g></svg></button
+                  ><button
+                    type="button"
+                    data-direction="down-right"
+                    aria-label="Down right"
+                    title="Down right"
+                    ><svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <g transform="rotate(135 12 12)">
+                        <path d="M12 19V5m-5 5 5-5 5 5" />
+                      </g></svg></button></div
+                ><button
+                  type="button"
+                  class="same-angle"
+                  data-direction="auto"
+                  title="Apply one averaged direction to the selection."
+                  >Average Angle</button
+                ></div
+              ><figure class="normal-direction-indicator"
+                ><div class="direction-label">Face Angle</div
+                ><svg
+                  id="normal-direction-sphere"
+                  viewBox="0 0 128 128"
+                  role="group"
+                  aria-label="Selected normal direction"
+                ></svg
+                ><figcaption id="normal-direction-readout"></figcaption></figure></div
+            ><select id="hint-direction" hidden aria-hidden="true"
+              ><option value="none">No angle applied</option
+              ><option value="existing">Existing directions</option
+              ><option value="facet">Sphere facet</option
+              ><option value="auto">Average Angle</option
+              ><option value="front">Front</option
+              ><option value="left">Left</option
+              ><option value="right">Right</option
+              ><option value="up">Up</option
+              ><option value="down">Down</option
+              ><option value="up-left">Up left</option
+              ><option value="up-right">Up right</option
+              ><option value="down-left">Down left</option
+              ><option value="down-right">Down right</option></select
+            ></div
+          >
+
+          <div class="selection-controls"
+            ><div
+              ><label class="normal-option" id="hint-tilt-label"
+                ><span class="slider-heading"
+                  ><span>Angle Strength <output id="hint-tilt-value">45°</output></span></span
+                ><input id="hint-tilt" type="range" min="0" max="85" value="45" /></label
+              ><label class="normal-option"
+                ><span class="slider-heading"
+                  ><span
+                    >Normal Strength <output id="modifier-normal-strength-value">100%</output></span
+                  ></span
+                ><input
+                  id="modifier-normal-strength"
+                  type="range"
+                  min="0"
+                  max="300"
+                  value="100" /></label
+              ><label class="mask-option"
+                ><span class="slider-heading"
+                  ><span
+                    ><span id="hint-brightness-label">Brightness</span>
+                    <output id="hint-brightness-value">100%</output></span
+                  ></span
+                ><input
+                  id="hint-brightness"
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="any"
+                  value="100" /></label></div
+          ></div>
+          <label class="mask-option"
+            >Brightness Adjustment<select id="hint-relative"
+              ><option value="relative" selected>Relative</option
+              ><option value="fixed">Fixed</option></select
+            ></label
+          ><div class="selection-source-row"
+            ><label class="selection-source-field"
+              >Wand Source<select id="hint-selection-source"
+                ><option value="albedo" selected>Albedo</option
+                ><option value="normal">Normal Map</option
+                ><option value="mask">Light Mask</option></select
+              ></label
+            ><label class="selection-color"
+              ><input
+                id="hint-color"
+                aria-label="Selection color"
+                title="Set the hint color."
+                type="color"
+                value="#65baff" /></label></div
+          ><ul id="hint-help"
+            ><li>Click - Select/deselect pixel cluster</li
+            ><li>Shift+Click - Add to selection</li
+            ><li>Alt+Click - Remove from selection</li></ul
+          ><div class="hint-actions"
+            ><button
+              type="button"
+              id="hint-undo"
+              class="hint-undo-icon"
+              aria-label="Undo"
+              title="Undo the previous edit. (Ctrl+Z)"
+              aria-keyshortcuts="Control+z Meta+z"
+              ><svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m9 5-6 6 6 6M3 11h11a6 6 0 0 1 6 6v2" /></svg></button
+            ><button
+              type="button"
+              id="hint-redo"
+              class="hint-undo-icon"
+              aria-label="Redo"
+              title="Redo the previous edit. (Ctrl+Shift+Z)"
+              aria-keyshortcuts="Control+Shift+z Meta+Shift+z"
+              ><svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m15 5 6 6-6 6M21 11H10a6 6 0 0 0-6 6v2" /></svg></button
+            ><button
+              type="button"
+              id="hint-clear"
+              title="Clears the current selection. (Ctrl+D)"
+              aria-keyshortcuts="Control+d"
+              >Clear Selection</button
+            ><button
+              type="button"
+              id="hint-fill-holes"
+              title="Fill enclosed selection gaps of up to four pixels. (Ctrl+F)"
+              aria-keyshortcuts="Control+f"
+              >Fill Holes</button
+            ><button
+              type="button"
+              id="hint-merge-outlines"
+              title="Attempt to include pixel art outlines into selections. (Ctrl+M)"
+              aria-keyshortcuts="Control+m"
+              >Merge Outlines</button
+            ></div
+          > </section
+        ><small id="modifier-status" role="status"></small
+        ><div class="modifier-view-options"
+          ><label class="toggle"
+            ><input id="modifier-show-texture" aria-keyshortcuts="S" type="checkbox" checked />Show
+            Texture</label
+          ><label class="toggle"
+            ><input
+              id="hint-contiguous"
+              aria-keyshortcuts="C"
+              type="checkbox"
+              checked
+            />Contiguous</label
+          ></div
+        ><div class="modifier-footer"
+          ><div class="selection-tool-buttons" role="group" aria-label="Selection tool"
+            ><button
+              type="button"
+              data-selection-tool="wand"
+              aria-label="Wand"
+              title="Wand (W)"
+              data-shortcut-tooltip
+              aria-keyshortcuts="W"
+              ><svg
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m5 8 12 12 3-3L8 5zM7 2v4M5 4h4M11 9l-2 2" /></svg></button
+            ><button
+              type="button"
+              data-selection-tool="pencil"
+              aria-label="Pencil"
+              title="Pencil (B)"
+              data-shortcut-tooltip
+              aria-keyshortcuts="B"
+              ><svg
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m4 16-1 5 5-1L20 8l-5-5zM13 5l5 5M4 16l4 4" /></svg></button
+            ><button
+              type="button"
+              data-selection-tool="marquee"
+              aria-label="Marquee"
+              title="Marquee (M)"
+              data-shortcut-tooltip
+              aria-keyshortcuts="M"
+              ><svg
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path stroke-dasharray="3 2" d="M3 4h18v16H3z" /></svg></button></div
+          ><div class="generator-actions"
+            ><button type="button" id="modifier-cancel">Cancel</button
+            ><button
+              type="button"
+              id="modifier-apply"
+              title="Apply changes (Enter)"
+              data-shortcut-tooltip
+              aria-keyshortcuts="Enter"
+              >Apply</button
+            ></div
+          ></div
+        ></dialog
+      ><dialog id="tool-info-dialog" aria-labelledby="tool-info-title"
+        ><div class="generator-heading"
+          ><h2 id="tool-info-title">Azimuth v 3.6.0</h2
+          ><button id="tool-info-close" type="button" aria-label="Close information"
+            ><svg
+              width="12"
+              height="12"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="m3 3 10 10M13 3 3 13" /></svg></button></div
+        ><div id="tool-info-content">
+          <!-- INFO WINDOW CONTENT: edit below. Engine notes: Use in a game engine. -->
+          <p><strong>Azimuth</strong> is a pixel art normal map tool based on <a href="https://www.moonfell-rpg.com/pixel-lighter.html" target="_blank" rel="noopener noreferrer">Pixel Art Lighter</a> by <a href="https://www.moonfell-rpg.com/" target="_blank" rel="noopener noreferrer">Red Hat Sprite</a>, with a few quality-of-life fixes and a cleaner UI. Thanks to Red Hat Sprite for the original.</p>
+          <h3>Why I built it</h3>
+          <p>Normal maps are traditionally used to add surface detail to low-poly 3D models. The same tech can be utilized for 2D art, allowing dynamic lighting on an otherwise static image.</p>
+          <p>For my indie game, I wanted to add lighting to pixel art without losing its distinct style.</p>
+          <p>Available tools repeatedly caused the same issue: generated normal maps made the original sprite look bad. The reason for this seemed fairly simple: depth estimation introduces information not present in the original art. This typically results in blobby-looking sprites that destroy the original aesthetic.</p>
+          <p>Eventually, I decided to research and test how to dynamically light sprites while preserving their original appeal. This led to a custom lighting system for my game and this tool to speed up map creation and editing.</p>
+          <h3>Why it is specific to pixel art</h3>
+          <p>In pixel art, a change in color can represent shading, an outline, a material boundary or fine detail. It does not necessarily represent a change in depth. Converting every contrast edge into surface relief can produce unwanted ridges and noisy or overly smooth lighting.</p>
+          <p>For example, since objects in the real world do not contain drawn outlines, we should consider them a stylistic choice. It's best not to treat them as part of a sprite’s suggested geometry, but instead give them the normal direction of their associated surface.</p>
+          <p>This tool uses connected color clusters as working regions, limits generated normal directions and handles outlines, keeping the final map faceted rather than smoothly shaded. The approach suits artwork built from deliberate pixel shapes and limited palettes.</p>
+          <h3>How the maps work</h3>
+          <p>The <em>albedo</em> (your original sprite/artwork) provides the color and alpha.<br>The <em>normal map</em> describes the direction each pixel’s surface faces.<br>The <em>light mask</em> controls how much direct light each pixel receives.</p>
+          <p>Lighting sprites works reasonably well with either map alone, but combining them provides clear benefits; normal maps make dynamic lights react to intended geometry, while light masks protect areas that should remain dark, whether from natural occlusion or for artistic purposes.</p>
+          <h3>Normal map generation</h3>
+          <p>A common normal-map workflow derives surface directions from a height map or 3D model. Other tools use algorithms to estimate shapes from a provided color map, which leads to physically inaccurate albeit serviceable maps.</p>
+          <p>Azimuth uses an <em>estimated height field</em> and belongs to the latter category. It groups connected pixels of the same color, estimates surface shape from image brightness and silhouette, then assigns simplified surface directions to those groups.</p>
+          <p>Larger groups can be split into multiple clean facets. Optional outline merging tries to carry nearby surface directions into dark outlines.</p>
+          <h3>Light mask generation</h3>
+          <p>The light mask starts from your albedo’s brightness, with controls for minimum light reception and additional darkening of enclosed dark regions.</p>
+          <p class="info-note">Light masks are much easier to create in traditional image editing software, but generation is included here for speed and convenience. It supports the same editing tools as normal maps.</p>
+          <h3>How to use</h3>
+          <h4>Main</h4>
+          <ul>
+          <li><strong>Load maps:</strong> Browse or drop PNG files for Albedo, Normal and Light Mask. Start with your albedo and load or generate matching maps. Linked files can reload automatically in supported browsers.</li>
+          <li><strong>Preview lighting:</strong> Move the point light by dragging, or enable Follow Mouse. Adjust light color, height, falloff, brightness, ambient light and Light Mask influence. View switches between the final lighting and individual maps.</li>
+          <li><strong>Background:</strong> Set BG Color or use Detect BG to sample the image border. Hide BG hides matching pixels.</li>
+          <li><strong>Navigation:</strong> Use the zoom controls, pinch or Ctrl-wheel to zoom. Fit shows the whole image. Hold Space and drag, or drag with the middle mouse button, to pan when zoomed in. Zoom follows the cursor with Ctrl-wheel. </li>
+          </ul>
+          <h4>Generate maps</h4>
+          <ul>
+          <li><strong>Normal:</strong> Choose a preset, then adjust Shape Strength, Normal Strength, Edge Width and Facet Splitting. Merge Outlines attempts to include outlines in nearby surfaces.</li>
+          <li><strong>Light Mask:</strong> Adjust Shading Strength, Darkest Value, Lightest Value and Cavity Darkening to control light reception.</li>
+          </ul>
+          <h4>Modify maps</h4>
+          <p>Both maps can be corrected manually. Click <strong>Modify</strong> under the map you want to edit. The lighting preview updates as changes are made.</p>
+          <ul>
+          <li><strong>Wand (W):</strong> Click a pixel color cluster to select/deselect it. Shift-click adds clusters; Alt-click removes them. Drag to use as quick selection tool. Wand Source chooses which map supplies the selection colors. Contiguous limits selection to connected pixels; turn it off to select matching colors across the image.</li>
+          <li><strong>Pencil (B) and Marquee (M):</strong> Draw a pixel selection or drag a rectangle. Shift adds to the selection; Alt removes from it.</li>
+          <li><strong>Options:</strong> Fill Holes fills small enclosed gaps. Merge Outlines to include outlines in the selection. Selection Color changes its display color. Toggle Show Texture to compare the edited map with its lighting result. </li>
+          <li><strong>Normal:</strong> Assign a direction using Apply Direction or click a facet in Face Angle sphere. Adjust Angle Strength to change the tilt. Average Angle averages the existing normals across selected pixels. Normal Strength adjusts the entire map.</li>
+          <li><strong>Light Mask:</strong> Adjust selected regions using Relative brightness changes or set them to a Fixed value.</li>
+          </ul>
+          <h4>Export</h4>
+          <p>Use Export under Normal or Light Mask to save that map as a PNG. The download button over the canvas saves the final lighting as a PNG.</p>
+          <h3>Using in a game engine</h3>
+          <h4>Godot 4</h4>
+          <p>Assign a CanvasTexture to Sprite2D. Set Diffuse to the albedo, Normal Map to the normal texture, and Specular to the light mask; add a PointLight2D. Adjust Specular Color and Shininess as needed.</p>
+          <h4>Unity (URP 2D)</h4>
+          <p>Use Sprite-Lit-Default material. In Sprite Editor &gt; Secondary Textures, assign the normal texture as _NormalMap. Enable normal-map use on Light 2D. The light mask needs a custom Sprite Lit shader that multiplies direct lighting by its red channel; the built-in _MaskTex uses blend-style channels.</p>
+          <h4>GameMaker</h4>
+          <p>Use a custom lighting shader. Draw the albedo with shader_set(); bind normal and mask textures with shader_get_sampler_index() and texture_set_stage(). Decode normals from RGB to -1..1, calculate diffuse lighting, and multiply direct light by the mask red channel. Call shader_reset() after drawing.</p>
+          <p>Invert the green channel in the shader if the lighting appears reversed.</p>
+          <p>References: <a href="https://docs.godotengine.org/en/stable/tutorials/shaders/shader_reference/canvas_item_shader.html" target="_blank" rel="noopener noreferrer">Godot</a> · <a href="https://docs.unity.com/en-us/engine/6000.0/manual/unity2d/2d-urp/2d-index/secondary-textures" target="_blank" rel="noopener noreferrer">Unity</a> · <a href="https://manual.gamemaker.io/beta/en/GameMaker_Language/GML_Reference/Drawing/Textures/texture_set_stage.htm" target="_blank" rel="noopener noreferrer">GameMaker</a></p>
+          <h3>Limitations</h3>
+          <h4>Normal Maps</h4>
+          <ul>
+          <li>Generated normal maps are estimates. Manual correction is expected where the inferred shape does not match the artwork, particularly on large, complex or hard-surface subjects.</li>
+          <li>The tool cannot reliably distinguish painted shading from material color or recover an object’s actual geometry.</li>
+          </ul>
+          <p class="info-note">I’m hoping to introduce more advanced shape estimation and welcome any help or insight.</p>
+          <h4>Light Masks</h4>
+          <ul>
+          <li>The light mask is an <em>artistic control</em> for pixel light reception. It does not calculate cast shadows or physical occlusion.</li>
+          <li>The generated mask is derived entirely from the brightness of the albedo texture.</li>
+          </ul>
+          <h4>Performance</h4>
+          <ul>
+          <li>To keep the tool lightweight and the code simple, lighting and map generation run on <strong>CPU</strong> in your browser’s main JavaScript thread. It does not use WebGL at this time.</li>
+          <li>Generation is limited to 2048×2048 (or equivalent dimensions). Large/complex images use more memory and may pause the interface during generation. Preview speed depends on image size and hardware.</li>
+          <li>The tool is suited to pixel art assets, not high-resolution textures.</li>
+          </ul>
+          <h3>Compatibility</h3>
+          <p>Chrome and Edge are recommended for automatic file refresh if you are editing and saving in a third party app. Brave supports automatic updates if File System Access API is enabled. Not tested in other browsers. </p>
+          <p class="info-note">Copyright © 2026 Red Hat Sprite.<br>Free and open source under the MIT License.<br><a href="https://x.com/moonfell_rpg" target="_blank" rel="noopener noreferrer">Suggestions</a> are welcome. Enjoy and have fun :)</p>
+        </div></dialog
+      ><div id="art-color-picker" role="dialog" aria-label="Color picker" hidden
+        ><div id="picker-sv" tabindex="0" role="slider" aria-label="Saturation and brightness"
+          ><span id="picker-dot"></span></div
+        ><div class="picker-panel"
+          ><div class="picker-color-row"
+            ><button
+              id="picker-eyedropper"
+              type="button"
+              aria-label="Sample screen color"
+              title="Sample screen color."
+              ><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M15 3l6 6-3 3-2-2-9 9H3v-4l9-9-2-2 3-3 2 2z"
+                  fill="currentColor"
+                /></svg></button
+            ><span id="picker-preview"></span
+            ><input id="picker-hue" type="range" min="0" max="359" step="1" aria-label="Hue" /></div
+          ><div id="picker-fields"></div
+          ><select id="picker-mode" aria-label="Color value format"
+            ><option value="rgb">RGB</option
+            ><option value="hsl">HSL</option
+            ><option value="hex">HEX</option></select
+          ><small id="picker-status" role="status"></small></div></div
+    ></main>
+    
+</body>
+</html>
