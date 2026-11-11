@@ -1,0 +1,27 @@
+{
+  "name": "azimuth",
+  "version": "3.6.0",
+  "description": "Pixel art lighting and normal maps.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Red Hat Sprite",
+  "bin": {
+    "azimuth": "./cli/azimuth.js"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "cli": "node ./cli/azimuth.js",
+    "cli:help": "node ./cli/azimuth.js --help"
+  },
+  "dependencies": {
+    "pngjs": "^7.0.0"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
