@@ -1,11 +1,11 @@
-// Azimuth - CLI for agents & automation (MIT Red Hat Sprite)
+// Azimuth - command-line tools for headless use (MIT Red Hat Sprite)
 // Usage:
 //   azimuth generate-normal --input albedo.png --output normal.png [options]
 //   azimuth generate-mask   --input albedo.png --output mask.png [options]
 //   azimuth light           --albedo albedo.png [--normal normal.png] [--mask mask.png] --output final.png [options]
 //   azimuth info            --input albedo.png [--json]
 //   azimuth bg-detect       --input albedo.png
-// All commands print JSON to stdout when --json is used (agent-friendly).
+// All commands print JSON to stdout when --json is used.
 // Works offline, no server needed. Put this file on PATH or run: node cli/azimuth.js ...
 
 import fs from 'node:fs';
@@ -100,7 +100,7 @@ Lighting options (light):
   --light-x / --light-y  (default center)
   --view lit|albedo|normal|mask (default lit)
 
-Agent tips:
+Headless use:
   - Add --json for machine-readable output.
   - Add --config params.json for reusable settings.
   - Exit codes: 0 ok, 1 usage/error. See README for JSON schemas.

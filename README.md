@@ -22,7 +22,7 @@ npm run preview  # preview the build
 
 Runs fully offline, with no CDN and no external requests. Fonts are local.
 
-## CLI - agent friendly
+## Headless use
 
 Works with Node 18+. Bin `azimuth`, or run `node cli/azimuth.js`.
 
@@ -47,7 +47,7 @@ node cli/azimuth.js bg-detect --input public/examples/knight.png --json
 node cli/azimuth.js generate-normal --input albedo.png --output n.png --config params.json
 ```
 
-### JSON outputs (for AI/agents)
+### JSON outputs
 
 Add `--json` to any command. Success returns `{"ok": true, ...}` on stdout with exit `0`.
 Error returns exit `1`, plus `{"ok": false, "error": "..."}` when `--json` is set.
