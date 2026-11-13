@@ -108,21 +108,6 @@ azimuth/
     examples/             skeleton_albedo.png, knight.png, crate.png
 ```
 
-## Examples
-
-`public/examples/` includes albedo inputs:
-
-- `skeleton_albedo.png` (250x200) - skeleton sprite used to demonstrate normal-map generation and lighting
-- `knight.png` (32x32) - knight
-
-Try the full pipeline:
-
-```bash
-node cli/azimuth.js generate-normal --input public/examples/skeleton_albedo.png --output out/skeleton_normal.png --preset object --json
-node cli/azimuth.js generate-mask --input public/examples/skeleton_albedo.png --output out/skeleton_mask.png --floor 20 --json
-node cli/azimuth.js light --albedo public/examples/skeleton_albedo.png --normal out/skeleton_normal.png --mask out/skeleton_mask.png --output out/skeleton_final.png --json
-```
-
 ## Credits
 
 Inspired by and based on [Pixel Art Lighter](https://www.moonfell-rpg.com/pixel-lighter.html) (c) 2026 Red Hat Sprite, MIT License. Pixel fonts are OFL-licensed Google Fonts (Press Start 2P, Silkscreen), bundled locally.
