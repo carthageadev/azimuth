@@ -112,7 +112,7 @@ azimuth/
 
 `public/examples/` includes albedo inputs:
 
-- `skeleton_albedo.png` (250x200) - skeleton demo, same as the original
+- `skeleton_albedo.png` (250x200) - skeleton sprite used to demonstrate normal-map generation and lighting
 - `knight.png` (32x32) - knight
 
 Try the full pipeline:
